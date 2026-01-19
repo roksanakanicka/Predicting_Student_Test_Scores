@@ -24,5 +24,5 @@ https://www.kaggle.com/competitions/playground-series-s6e1
 Główną miarą oceny, zgodnie z wymaganiami konkursu, będzie RMSE (Root Mean Squared Error). Dodatkowo będziemy monitorować współczynnik determinacji R2, aby ocenić, jaki procent wariancji zmiennej celu wyjaśnia nasz model.
 
 ## 5. Planowany podział zadań
-- **Roksana Kanicka:** Implementacja modeli bazowych i zaawansowanych (XGBoost, LightGBM, CatBoost), optymalizacja hiperparametrów (Optuna), przygotowanie finalnej submisji.
-- **Wiktoria Nowak:** Eksploracyjna analiza danych (EDA), inżynieria cech (feature engineering), integracja z platformą Weights & Biases (wandb.com).
+- **Roksana Kanicka:** Implementacja modeli bazowych i zaawansowanych (XGBoost, LightGBM, CatBoost), optymalizacja hiperparametrów, przygotowanie finalnej submisji.
+- **Wiktoria Nowak:** Eksploracyjna analiza danych (EDA), inżynieria cech , integracja z platformą Weights & Biases 
