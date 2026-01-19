@@ -1,53 +1,28 @@
-# Przewidywanie Jakości Powietrza – Projekt ML
+# Optymalizacja modeli regresyjnych w przewidywaniu wyników edukacyjnych: Udział w konkursie Kaggle S6E1.
 ### Informacje o projekcie
 - **Przedmiot:** Uczenie Maszynowe 2025/2026
 - **Kierunek:** Informatyka i ekonometria
 - **Autorzy:** Roksana Kanicka, Wiktoria Nowak
 
 ## 1. Opis i cel projektu
-Projekt opiera się na analizie danych z wielosensorowego urządzenia do pomiaru gazów, umieszczonego w silnie zanieczyszczonym obszarze włoskiego miasta. Dane obejmują roczny okres (marzec 2004 – luty 2005) i zawierają odpowiedzi z 5 czujników chemicznych na bazie tlenków metali.
+Celem projektu jest stworzenie modelu uczenia maszynowego, który na podstawie danych demograficznych i akademickich precyzyjnie przewidzi wynik egzaminu studenta. Prace zostaną podzielone na cztery główne etapy. Pierwszym krokiem będzie eksploracyjna analiza danych (EDA), mająca na celu identyfikację korelacji między cechami (np. godzinami nauki, frekwencją) a zmienną celu (exam_score) oraz wykrycie ewentualnych anomalii w syntetycznym zbiorze danych.
 
-**Główny cel:** Stworzenie i porównanie modeli regresyjnych, które w jak najlepszy sposób będą przewidywać zanieczyszczenie powietrza poprzez estymację stężenia tlenku węgla **CO(GT)**
+**Główny cel:** Porównanie wyników z rankingiem na platformie Kaggle
 
-## 2. Opis problemu do rozwiazania
-Głównym wyzwaniem badawczym jest niska precyzja odczytów z tanich sensorów chemicznych (PT08.S1–PT08.S5). W przeciwieństwie do profesjonalnych, certyfikowanych analizatorów (GT – Ground Truth), tanie sensory są podatne na błędy wynikające z tzw. czułości krzyżowej (cross-sensitivity). Oznacza to, że ich odczyty są zniekształcone przez zmiany temperatury, wilgotności oraz obecność innych gazów (np. sensor CO może błędnie reagować na spaliny diesla).
+## 2. Zbiór danych do treningu i testowania
+Zbiór danych pochodzi z konkursu Kaggle Predicting Student Test Scores. Składa się z pliku train.csv (dane treningowe z etykietami) oraz test.csv (dane do predykcji konkursowej).
+https://www.kaggle.com/competitions/playground-series-s6e1
 
-Dodatkowo, zbiór danych posiada ograniczenia techniczne:
-- **Braki danych:** Systemowe błędy oznaczone jako `-200`, wymagające preprocessingu.
-- **Wielkość zbioru:** 9357 obserwacji godzinowych, co po usunięciu braków wymusza zastosowanie technik imputacji danych, aby zachować reprezentatywność zbioru.
+## 3. Lista metod planowanych do zastosowania
+    Modele: Linear Regression (baseline), Random Forest, XGBoost, LightGBM, CatBoost.
 
-## 3. Zbiór danych do treningu i testowania
-- **Zbiór**: `Air Quality Data Set` z Kaggle
-- **Link:** https://www.kaggle.com/datasets/fedesoriano/air-quality-data-set
-- **Cechy (Features):**
-  - `PT08.S1` - `PT08.S5`: Odpowiedzi tanich sensorów (tlenki metali) reagujących na różne składniki powietrza.
-  - `T`, `RH`, `AH`: Parametry pogodowe (temperatura, wilgotność) służące do korekty błędów pomiarowych sensorów.
-  - `Godzina`: Cecha wygenerowana z kolumny `Time`, uwzględniająca dobowe cykle zanieczyszczeń.
-  - `Miesiąc`: Dla uwzględnienia sezonowości zanieczyszczeń.
-- **Wartość przewidywana (Target)**
-  - `CO(GT)`: Rzeczywiste stężenie tlenku węgla, które model ma oszacować.
+    Techniki: K-Fold Cross-Validation, Optuna (hyperparameter tuning), Weighted Averaging/Stacking (ensembling).
 
-## 4. Lista metod planowanych do zastosowania
-W projekcie przetestujemy przynajmniej trzy podejścia regresyjne:
+    Narzędzia: Python (Scikit-learn, Pandas, NumPy), WandB, Kaggle API.
 
-**1. Regresja Liniowa (Linear Regression)**
+## 4. Miary oceny jakości modeli
+Główną miarą oceny, zgodnie z wymaganiami konkursu, będzie RMSE (Root Mean Squared Error). Dodatkowo będziemy monitorować współczynnik determinacji R2, aby ocenić, jaki procent wariancji zmiennej celu wyjaśnia nasz model.
 
-**2. Las Losowy (Random Forest Regressor)**
-
-**3. XGBoost**
-
-## 5. Miary oceny jakości modeli
-Skuteczność modeli ocenimy za pomocą metryk:
-
-- **MAE (Mean Absolute Error):** średni błąd bezwzględny
-- **RMSE (Root Mean Squared Error):** pierwiastek błędu średniokwadratowego
-- **$R^2$ (Współczynnik determinacji):** miara dopasowania modelu do danych
-
-## 6. Planowany podział zadań
-- **Roksana Kanicka:** Konfiguracja repozytorium, wczytanie danych, preprocessing, Eksploracyjna analiza danych (EDA), implementacja modeli Regresji Liniowej i XGBoost.
-- **Wiktoria Nowak:** wyciągnięcie godziny i miesiąca z cech, implementacja modelu Random Forest, implementacja alternatywnych modeli oraz końcowe porównanie wyników.
-
-## 7. Do rozważenia:
-- **Optymalizacja hiperparametrów** - wykorzystanie GridSearchCV do znalezienia najlepszych ustawień modeli.
-- **Analiza ważności cech** -  Sprawdzenie, który sensor lub parametr pogodowy ma największy wpływ na błąd pomiarowy.
-- **Analiza błędów (Error Analysis)**
+## 5. Planowany podział zadań
+- **Roksana Kanicka:** Implementacja modeli bazowych i zaawansowanych (XGBoost, LightGBM, CatBoost), optymalizacja hiperparametrów (Optuna), przygotowanie finalnej submisji.
+- **Wiktoria Nowak:** Eksploracyjna analiza danych (EDA), inżynieria cech (feature engineering), integracja z platformą Weights & Biases (wandb.com).
