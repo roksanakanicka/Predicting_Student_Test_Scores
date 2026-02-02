@@ -1,6 +1,7 @@
 # Predicting Student Test Scores - Kaggle Playground Series S6E1
 
 **Autors:** Roksana Kanicka, Wiktoria Nowak
+
 **Wynik CV:** RMSE 8.71058  
 
 ---
