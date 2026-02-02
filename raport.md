@@ -121,8 +121,8 @@ eval_metric: 'rmse'
 ## Pliki
 
 - `EDA_Predicting_Student_Test_Scores.py` - Eksploracyjna analiza danych
-- `Przewidywanie_wyników_edukacyjnych.py` - Model XGBoost + submission
-- `submission.csv` - Finalne predykcje (RMSE 8.704)
+- `Przewidywanie_wyników_edukacyjnych.py` - Model XGBoost
+- `submission.csv` - Finalne predykcje (RMSE 8.71058)
 
 ---
 
