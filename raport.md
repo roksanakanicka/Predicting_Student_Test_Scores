@@ -117,7 +117,7 @@ eval_metric: 'rmse'
 - LightGBM Ensemble (progres: 0.00016)
 - bardzo restrykcyjne perfection_score progi
 - dropowanie age
-
+- próba binowania cech numerycznych: study_hours i sleep_hours (kubełki co 0.5h)
 
 ## Pliki
 
