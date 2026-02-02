@@ -1,6 +1,7 @@
 # Predicting Student Test Scores - Kaggle Playground Series S6E1
 
 **Autors:** Roksana Kanicka, Wiktoria Nowak
+
 **Private Score:** RMSE 8.71053
 
 ---
